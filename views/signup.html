@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Sign Up </title>
+    <link rel="stylesheet" type="text/css" href="/public/stylesheets/style.css"/>
+    <style>
+        body {font-family: Arial, Helvetica, sans-serif;}
+        form {
+            float: center;
+        }
+        input[type=text], input[type=password],input[type=email] {
+            width: 30%;
+          padding: 15px 10px;
+          margin: 8px 0;
+          display: inline-block;
+          border: 1px solid #ccc;
+          border-color: white;
+          box-sizing: border-box;
+          background-color: #F0F0F0; 
+        }
+        h2 {
+            font-size: 40px;
+            text-align: center;
+            color: #5A5373;
+            padding: 30px 0px;
+        }
+
+        button {
+            background-color: #706890;
+            color: white;
+            font-size: 17px;
+            border-radius: 15px;
+            padding: 10px 5px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 30%;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        .cancelbtn {
+            width: auto;
+            padding: 10px 18px;
+            background-color: #f44336;
+        }
+
+        /* Change styles for span and cancel button on extra small screens */
+        @media screen and (max-width: 300px) {
+            span.psw {
+                display: block;
+                float: none;
+            }
+            .cancelbtn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<div class="topnav">
+    <div class="topnav">
+        <a href="/">Home</a>
+        <a href="/login">Login</a>
+        <a class="active" href="/signup">Sign Up</a>
+
+    </div>
+</div>
+<script>
+    function validate()
+    {   
+        var pwd = document.getElementById("password").value;
+        var cfmpwd = document.getElementById("cfmpassword").value;
+        if (pwd != cfmpwd)
+        {
+            alert("Password and confirm password must match");
+            return false;
+        }
+        return true;
+    }
+</script>
+<body>
+    <h2> Create Account </h2>
+    <div class ="form">
+    <form action="/users" method="post" onsubmit="return validate()">
+
+    <div class="container" >
+            <!--<label for="name"><b>Name</b></label><br>-->
+            <input type="text" name="name" id="name"
+            placeholder="Name"  required><br>
+
+            <!--<label for="name"><b>E-Mail</b></label><br>-->
+            <input type="email" name="email" id="email"
+            placeholder="Email e.g. username@gmail.com"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"  required><br>
+
+            <!--<label for="name"><b>Password</b></label><br>-->
+            <input type="password" name="password" minlength="3"
+            id="password" placeholder="Password: minimum length 3 " required><br>
+
+            <input type="password" name="cfmpassword"
+            id="cfmpassword" placeholder="Re-enter Password " required><br>
+
+             <button type="submit">Continue</button>
+    </div>
+    </form>
+</div>
+
+</body>
+</html>
